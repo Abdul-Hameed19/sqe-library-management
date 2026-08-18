@@ -1,3 +1,3 @@
 class Gradebook:
-    def __init__(self, roll_no):
-        self.roll_no = roll_no
+    def __init__(self, id_number):
+        self.id_number = id_number
