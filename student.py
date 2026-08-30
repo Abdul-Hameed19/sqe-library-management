@@ -1,16 +1,14 @@
 class Student:
-    def __init__(self, name, roll_no):
+    def __init__(self, name):
         self.name = name
-        self.roll_no = roll_no
         self.scores = []
 
     def add_score(self, score_value):
+        if score_value < 0:
+            raise ValueError("Score cannot be negative")
         self.scores.append(score_value)
 
     def average(self):
         if not self.scores:
             return 0.0
-        return round(sum(self.scores) / len(self.scores), 1)
-
-    def is_same_name(self, other_name):
-        return self.name == other_name
+        return sum(self.scores) / len(self.scores)
