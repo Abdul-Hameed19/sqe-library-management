@@ -5,6 +5,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from student import Student
 
-student = Student("Ali", 101)
+student = Student("Ali", 103)
 
 print(student.average())
