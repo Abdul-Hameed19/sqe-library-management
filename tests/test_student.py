@@ -1,10 +1,4 @@
-import os
-import sys
+def test_student_average(make_student):
+    student = make_student("Ali", 103, [80, 90, 100])
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from student import Student
-
-student = Student("Ali", 103)
-
-print(student.average())
+    assert student.average() == 90.0

@@ -1,14 +1,8 @@
-import sys
-import os
+import pytest
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from student import Student
+def test_negative_score_rejected(make_student):
+    student = make_student("Ali", 102)
 
-student = Student("Ali", 102)
-
-try:
-    student.add_score(-10)
-    print("FAIL: Negative score was accepted")
-except ValueError:
-    print("PASS: Negative score was rejected")
+    with pytest.raises(ValueError):
+        student.add_score(-10)
