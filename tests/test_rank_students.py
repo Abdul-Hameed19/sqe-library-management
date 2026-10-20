@@ -30,3 +30,17 @@ def test_rank_students_sorts_by_average_descending(make_student):
     roster.add_student(ahmed)
 
     assert rank_students(roster) == [sara, ahmed, ali]
+
+
+def test_rank_students_sorts_equal_averages_alphabetically(make_student):
+    roster = Roster()
+
+    sara = make_student("Sara", 305, [80, 90])
+    ali = make_student("Ali", 306, [85, 85])
+    ahmed = make_student("Ahmed", 307, [90, 80])
+
+    roster.add_student(sara)
+    roster.add_student(ali)
+    roster.add_student(ahmed)
+
+    assert rank_students(roster) == [ahmed, ali, sara]
