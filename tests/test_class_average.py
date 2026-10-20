@@ -27,3 +27,18 @@ def test_class_average_empty_roster():
     roster = Roster()
 
     assert roster.class_average() == 0.0
+
+
+
+
+def test_class_average_using_module_fixture(make_student, sample_scores):
+    # Arrange: use shared module-scoped scores
+    roster = Roster()
+    student = make_student("Sara", 204, sample_scores)
+    roster.add_student(student)
+
+    # Act
+    result = roster.class_average()
+
+    # Assert
+    assert result == 80.0
