@@ -74,6 +74,6 @@ class Roster:
 def rank_students(roster):
     return sorted(
         roster.students,
-        key=lambda student: student.average(),
-        reverse=True
+        key=lambda student: (-student.average(), student.name.lower())
     )
+
