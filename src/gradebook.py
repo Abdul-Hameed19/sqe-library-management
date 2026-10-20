@@ -70,4 +70,6 @@ class Roster:
 
 
 def rank_students(roster):
-    return []
+    if not roster.students:
+        return []
+    return [roster.students[0]]
