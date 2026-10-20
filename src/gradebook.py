@@ -1,3 +1,4 @@
+
 import re
 
 
@@ -29,7 +30,9 @@ def validate_name(name):
         raise ValueError("Name cannot exceed 50 characters")
 
     if not re.fullmatch(r"[A-Za-z -]+", name):
-        raise ValueError("Name can contain only letters, spaces, and hyphens")
+        raise ValueError(
+            "Name can contain only letters, spaces, and hyphens"
+        )
 
     return True
 
@@ -48,7 +51,7 @@ class Roster:
 
     def class_average(self):
         if not self.students:
-            return 0.0
+            return 0
 
         total = sum(student.average() for student in self.students)
         return total / len(self.students)
@@ -61,4 +64,10 @@ class Roster:
                     line = f"{student.name},{student.roll_no},{scores}\n"
                     file.write(line)
         except OSError as e:
-            raise GradeBookIOError("Could not save roster to file") from e
+            raise GradeBookIOError(
+                "Could not save roster to file"
+            ) from e
+
+
+def rank_students(roster):
+    return []
