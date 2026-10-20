@@ -69,7 +69,11 @@ class Roster:
             ) from e
 
 
+
+
 def rank_students(roster):
-    if not roster.students:
-        return []
-    return [roster.students[0]]
+    return sorted(
+        roster.students,
+        key=lambda student: student.average(),
+        reverse=True
+    )
