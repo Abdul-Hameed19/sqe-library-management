@@ -77,3 +77,14 @@ def rank_students(roster):
         key=lambda student: (-student.average(), student.name.lower())
     )
 
+
+def percentile(student, roster):
+    rank_index = sum(
+        1 for s in roster.students
+        if s.average() < student.average()
+    )
+
+    total_students = len(roster.students)
+
+    return (rank_index / total_students) * 100
+
