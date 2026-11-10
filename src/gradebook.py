@@ -79,12 +79,18 @@ def rank_students(roster):
 
 
 def percentile(student, roster):
-    rank_index = sum(
-        1 for s in roster.students
-        if s.average() < student.average()
-    )
-
+    """Return the student's percentile based on their average score."""
     total_students = len(roster.students)
 
-    return (rank_index / total_students) * 100
+    if total_students == 0:
+        return 0.0
 
+    if total_students == 1:
+        return 100.0
+
+    rank_index = sum(
+        1 for other_student in roster.students
+        if other_student.average() < student.average()
+    )
+
+    return (rank_index / (total_students - 1)) * 100

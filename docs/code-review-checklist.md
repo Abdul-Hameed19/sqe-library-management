@@ -24,3 +24,11 @@
 - [ ] Can the change break existing functionality?
 - [ ] Are invalid inputs handled safely?
 - [ ] Could the implementation introduce performance or security problems?
+
+## 6. Lessons Learned (Retrospective)
+
+### Most Valuable Checklist Item
+- Checking whether edge cases are handled correctly was the most valuable item because it helped identify division by zero and single-student issues in the percentile function.
+
+### New Checklist Item to Add
+- [ ] Are boundary conditions and special cases tested, including empty collections, single items, and duplicate values?
