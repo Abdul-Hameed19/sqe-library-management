@@ -79,12 +79,14 @@ def rank_students(roster):
 
 
 def percentile(student, roster):
+    total_students = len(roster.students)
+
+    if total_students == 0:
+        raise ValueError("Roster cannot be empty")
+
     rank_index = sum(
         1 for s in roster.students
         if s.average() < student.average()
     )
 
-    total_students = len(roster.students)
-
     return (rank_index / total_students) * 100
-
