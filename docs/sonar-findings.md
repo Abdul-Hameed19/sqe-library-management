@@ -1,16 +1,17 @@
+
 # SonarCloud Static Code Analysis Findings
 
 ## 1. Overview
 
 Static code analysis was performed using SonarQube Cloud for the `sqe-library-management` project.
 
-The purpose of this analysis was to identify bugs, vulnerabilities, code smells, and other code quality issues.
+The purpose was to identify bugs, vulnerabilities, code smells, and other code quality issues.
 
-## 2. Analysis Results
+## 2. Initial and Final Analysis Results
 
-The SonarCloud Issues page showed no issues in the analyzed `main` branch.
+The initial analysis of the main branch reported zero issues.
 
-The Pull Request analysis (#24) also reported zero new issues.
+The final Pull Request analysis (#24) also reported zero new issues.
 
 | Metric | Result |
 |---|---:|
@@ -24,7 +25,7 @@ The Pull Request analysis (#24) also reported zero new issues.
 
 ## 3. Severity Classification
 
-No issues were detected, so there were no findings to classify.
+No issues were detected in the analyzed results.
 
 | Severity | Number of findings |
 |---|---:|
@@ -36,20 +37,42 @@ No issues were detected, so there were no findings to classify.
 
 ## 4. Top 8 Issues
 
-SonarCloud did not report any issues. Therefore, there are no top 8 findings to list.
+SonarCloud did not report any issues in the analyzed Pull Request. Therefore, there were no findings to list among the top eight issues.
 
 No rule IDs, file locations, or line numbers were available because no issues were detected.
 
-## 5. Risk Assessment
+## 5. Manual Code Quality Improvements
+
+Although SonarCloud reported zero new issues, the following manual maintainability improvements were made in `src/gradebook.py`:
+
+1. Replaced the maximum score value with the named constant `MAX_SCORE`.
+2. Replaced the maximum name length with `MAX_NAME_LENGTH`.
+3. Introduced `MIN_SCORES` and `MAX_SCORES` for score-count validation.
+4. Created `GRADE_THRESHOLDS` to centralize grade boundaries.
+5. Compiled the name-validation regular expression once and reused it through `NAME_PATTERN`.
+
+These changes improve readability, maintainability, and reuse of validation rules. They are manual refactoring improvements, not five confirmed SonarCloud issue findings.
+
+## 6. Analysis Warning
+
+SonarCloud displayed one analysis warning stating that Python code was analyzed as compatible with versions 3.10 through 3.15 by default.
+
+The project configuration contains `sonar.python.version=3.13`. However, the project uses SonarCloud Automatic Analysis, whose supported optional configuration does not list this parameter.
+
+The warning did not prevent the analysis from completing or the Quality Gate from passing.
+
+## 7. Risk Assessment
 
 No bugs, vulnerabilities, or code smells were reported in the analyzed results.
 
-This indicates that SonarCloud did not identify any issues in the analyzed code. However, zero reported issues does not guarantee that the software is completely free from defects.
+However, zero reported issues does not guarantee that the software is completely free from defects.
 
-The reported 0.0% coverage on new code also indicates that the new code was not covered by tests during this analysis.
+The reported 0.0% coverage on new code indicates that SonarCloud did not report test coverage for the analyzed changes. This does not necessarily mean that no tests were written or executed.
 
-## 6. Conclusion
+## 8. Conclusion
 
-The SonarCloud analysis reported zero new issues and the Quality Gate passed for Pull Request #24.
+SonarCloud analysis for Pull Request #24 completed successfully, with zero new issues and a passed Quality Gate.
 
-The analysis results have been documented for the Static Code Analysis lab.
+Manual code quality improvements were also performed, and the existing test suite passed 62 tests.
+
+The analysis results and improvements have been documented for the Static Code Analysis lab.
